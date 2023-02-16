@@ -17,18 +17,19 @@ for(let i = 1; i < tableSize; i++){
 };
 
 
-function getVarValues(){
-   let p = [];
-   let q = [];
-   let r = [];
+function getVarValues(firstCol, secondCol){
+   let colOne = [];
+   let colTwo = [];
 
    for(let i = 1; i < tableSize; i++){
       let tr = table.getElementsByTagName("tr")[i];
-      td = tr.children[0];
-      td.innerHTML = "hello";
+      colOne.push(tr.children[firstCol].innerHTML);
+      colTwo.push(tr.children[secondCol].innerHTML);
+        
    }
-
-
+   console.log(colOne);
+   console.log(colTwo);
+     
 }
 
 function insertValues(){
@@ -42,4 +43,4 @@ function insertValues(){
 
 
 
- 
+ getVarValues(0,2);
