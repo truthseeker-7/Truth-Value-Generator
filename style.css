@@ -1,0 +1,74 @@
+/* Set the font and background color for the whole table */
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Set the font color for the table header */
+  th {
+    color: #fff;
+    background-color: #6c7ae0;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Set the font color for the table cells */
+  td {
+    color: #363636;
+    padding: 12px;
+  }
+  
+  /* Add a border to the table cells */
+  td, th {
+    border: 1px solid #e2e2e2;
+  }
+
+  /* Add a striped effect to the table rows */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Add a box-shadow effect to the table */
+  table {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  /* Style the input field */
+input[type="text"] {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    color: #555;
+    margin-right: 10px;
+  }
+  
+  /* Style the button */
+  button {
+    border: none;
+    border-radius: 20px;
+    background-color: #6c7ae0;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  /* Change the button color when hovered */
+  button:hover {
+    background-color: #4d56b3;
+  }
+  
+  /* Change the button color when active */
+  button:active {
+    background-color: #303899;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
