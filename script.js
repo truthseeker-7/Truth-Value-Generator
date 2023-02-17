@@ -1,5 +1,6 @@
 let table = document.getElementById("table");
 const tableSize = 9;
+checkboxVal = 3;
 
 document.getElementById("btn").onclick = function(){
   let text = document.getElementById("text");
@@ -7,6 +8,7 @@ document.getElementById("btn").onclick = function(){
   let th = document.createElement("th"); 
   th.innerHTML = text.value; 
   tr.appendChild(th); 
+  checkboxVal += 1;
 
   for (let i = 1; i <= tableSize; i++) {
    let tr = table.getElementsByTagName("tr")[i];
@@ -16,6 +18,7 @@ document.getElementById("btn").onclick = function(){
    if (i === tableSize) {
      let checkbox = document.createElement("input");
      checkbox.type = "checkbox";
+     checkbox.value = checkboxVal;
      checkbox.style.margin = "15px";
      td.appendChild(checkbox);
    }
@@ -36,6 +39,7 @@ document.getElementById("btn").onclick = function(){
     }
     
    getVarValues(checked[0], checked[1]);
+   checked.length = 0;
 }
 
 function getVarValues(firstCol, secondCol){
