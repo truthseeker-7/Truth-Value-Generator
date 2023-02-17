@@ -8,30 +8,34 @@ document.getElementById("btn").onclick = function(){
   th.innerHTML = text.value; 
   tr.appendChild(th); 
 
-for(let i = 1; i < tableSize; i++){
+  for (let i = 1; i <= tableSize; i++) {
    let tr = table.getElementsByTagName("tr")[i];
-   let td = document.createElement("td"); 
+   let td = document.createElement("td");
    tr.appendChild(td);
-  }
+ 
+   if (i === tableSize) {
+     let checkbox = document.createElement("input");
+     checkbox.type = "checkbox";
+     checkbox.style.margin = "15px";
+     td.appendChild(checkbox);
+   }
+ }
+
   insertValues();
-
-tr = table.getElementsByTagName("tr")[9]; 
-var checkbox = document.createElement("input");
-checkbox.type = "checkbox";
-checkbox.style.margin = "15px";
-tr.appendChild(checkbox);
-
+  isChecked();
 };
 
 
  function isChecked(){
     let checkboxes = table.getElementsByTagName("input");
-   
+    let checked = [];
     for(checkbox of checkboxes){
-       if(checkbox.checked){
-          alert();
-       }
+      if(checkbox.checked){
+         checked.push(checkbox.value);
+      }
     }
+    
+   getVarValues(checked[0], checked[1]);
 }
 
 function getVarValues(firstCol, secondCol){
@@ -44,6 +48,8 @@ function getVarValues(firstCol, secondCol){
       colTwo.push(tr.children[secondCol].innerHTML);
         
    } 
+   alert(colOne);
+   alert(colTwo);
 }
 
 function insertValues(){
@@ -52,5 +58,4 @@ function insertValues(){
       td = tr.lastElementChild;
       td.innerHTML = "hello";
    }
-
 }
