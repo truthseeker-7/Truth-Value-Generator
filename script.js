@@ -14,8 +14,25 @@ for(let i = 1; i < tableSize; i++){
    tr.appendChild(td);
   }
   insertValues();
+
+tr = table.getElementsByTagName("tr")[9]; 
+var checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+checkbox.style.margin = "15px";
+tr.appendChild(checkbox);
+
 };
 
+
+ function isChecked(){
+    let checkboxes = table.getElementsByTagName("input");
+   
+    for(checkbox of checkboxes){
+       if(checkbox.checked){
+          alert();
+       }
+    }
+}
 
 function getVarValues(firstCol, secondCol){
    let colOne = [];
@@ -26,10 +43,7 @@ function getVarValues(firstCol, secondCol){
       colOne.push(tr.children[firstCol].innerHTML);
       colTwo.push(tr.children[secondCol].innerHTML);
         
-   }
-   console.log(colOne);
-   console.log(colTwo);
-     
+   } 
 }
 
 function insertValues(){
@@ -40,7 +54,3 @@ function insertValues(){
    }
 
 }
-
-
-
- getVarValues(0,2);
