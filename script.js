@@ -24,8 +24,9 @@ document.getElementById("btn").onclick = function(){
    }
  }
 
-  insertValues();
-  isChecked();
+
+   isChecked();
+  insertValues();  
 };
 
 
@@ -61,5 +62,28 @@ function insertValues(){
       let tr = table.getElementsByTagName("tr")[i];
       td = tr.lastElementChild;
       td.innerHTML = "hello";
+   }
+}
+
+function getOperator(){
+   container = document.getElementById("container");
+   radioBtns = container.getElementsByTagName("input");
+   for(radio of radioBtns){
+      if(radio.checked){
+         alert(radio.value);
+      }
+   }
+}
+
+function evaluate(columnOne, columnTwo, operator){
+   let truthCase;
+   for(let i = 0; i < tableSize; i++){
+      if()
+      switch (operator){
+         case 'or':
+             return columnOne[i] || columnTwo[i];
+             break;
+                           
+      }
    }
 }
