@@ -1,6 +1,9 @@
 let table = document.getElementById("table");
 const tableSize = 9;
 checkboxVal = 3;
+let firstTruthCase;
+let secondTruthCase;
+
 
 document.getElementById("btn").onclick = function(){
   let text = document.getElementById("text");
@@ -24,9 +27,7 @@ document.getElementById("btn").onclick = function(){
    }
  }
 
-
-   isChecked();
-  insertValues();  
+ isChecked(); 
 };
 
 
@@ -38,9 +39,8 @@ document.getElementById("btn").onclick = function(){
          checked.push(checkbox.value);
       }
     }
-    
+    console.log(checked);
    getVarValues(checked[0], checked[1]);
-   checked.length = 0;
 }
 
 function getVarValues(firstCol, secondCol){
@@ -50,18 +50,23 @@ function getVarValues(firstCol, secondCol){
    for(let i = 1; i < tableSize; i++){
       let tr = table.getElementsByTagName("tr")[i];
       colOne.push(tr.children[firstCol].innerHTML);
-      colTwo.push(tr.children[secondCol].innerHTML);
-        
+      colTwo.push(tr.children[secondCol].innerHTML);    
    } 
-   alert(colOne);
-   alert(colTwo);
+
+   let operator = getOperator();
+   console.log(colOne, colTwo);
+   evaluate(colOne, colTwo, operator);
 }
 
-function insertValues(){
+function insertValues(newCases){
    for(let i = 1; i < tableSize; i++){
       let tr = table.getElementsByTagName("tr")[i];
       td = tr.lastElementChild;
-      td.innerHTML = "hello";
+      if(newCases[i-1] == true){
+         td.innerHTML = 'T';
+      }else{
+         td.innerHTML = 'F';
+      }
    }
 }
 
@@ -70,20 +75,38 @@ function getOperator(){
    radioBtns = container.getElementsByTagName("input");
    for(radio of radioBtns){
       if(radio.checked){
-         alert(radio.value);
+         return radio.value;
       }
    }
 }
 
+
+
 function evaluate(columnOne, columnTwo, operator){
-   let truthCase;
+   let newCases = [];
    for(let i = 0; i < tableSize; i++){
-      if()
+   
+      if(columnOne[i] == 'T'){
+         firstTruthCase = true;
+      }else{
+         firstTruthCase = false;
+      }
+      if(columnTwo[i] == 'T'){
+         secondTruthCase = true;
+      }else{
+         secondTruthCase = false;
+      }
+         
       switch (operator){
          case 'or':
-             return columnOne[i] || columnTwo[i];
-             break;
-                           
-      }
+            console.log(firstTruthCase, secondTruthCase);
+            console.log(firstTruthCase || secondTruthCase);
+            newCases.push(firstTruthCase || secondTruthCase);
+            console.log(newCases);
+             break;        
+         case 'and':
+             newCases.push(firstTruthCase && secondTruthCase);
+            }
    }
+   insertValues(newCases);
 }
