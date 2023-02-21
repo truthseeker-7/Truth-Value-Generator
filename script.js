@@ -1,5 +1,9 @@
 let table = document.getElementById("table");
 const tableSize = 9;
+checkboxVal = 3;
+let firstTruthCase;
+let secondTruthCase;
+
 
 document.getElementById("btn").onclick = function(){
   let text = document.getElementById("text");
@@ -7,15 +11,37 @@ document.getElementById("btn").onclick = function(){
   let th = document.createElement("th"); 
   th.innerHTML = text.value; 
   tr.appendChild(th); 
+  checkboxVal += 1;
 
-for(let i = 1; i < tableSize; i++){
+  for (let i = 1; i <= tableSize; i++) {
    let tr = table.getElementsByTagName("tr")[i];
-   let td = document.createElement("td"); 
+   let td = document.createElement("td");
    tr.appendChild(td);
-  }
-  insertValues();
+ 
+   if (i === tableSize) {
+     let checkbox = document.createElement("input");
+     checkbox.type = "checkbox";
+     checkbox.value = checkboxVal;
+     checkbox.style.margin = "15px";
+     td.appendChild(checkbox);
+   }
+ }
+
+ isChecked(); 
 };
 
+
+ function isChecked(){
+    let checkboxes = table.getElementsByTagName("input");
+    let checked = [];
+    for(checkbox of checkboxes){
+      if(checkbox.checked){
+         checked.push(checkbox.value);
+      }
+    }
+    console.log(checked);
+   getVarValues(checked[0], checked[1]);
+}
 
 function getVarValues(firstCol, secondCol){
    let colOne = [];
@@ -24,24 +50,63 @@ function getVarValues(firstCol, secondCol){
    for(let i = 1; i < tableSize; i++){
       let tr = table.getElementsByTagName("tr")[i];
       colOne.push(tr.children[firstCol].innerHTML);
-      colTwo.push(tr.children[secondCol].innerHTML);
-        
-   }
-   console.log(colOne);
-   console.log(colTwo);
-     
+      colTwo.push(tr.children[secondCol].innerHTML);    
+   } 
+
+   let operator = getOperator();
+   console.log(colOne, colTwo);
+   evaluate(colOne, colTwo, operator);
 }
 
-function insertValues(){
+function insertValues(newCases){
    for(let i = 1; i < tableSize; i++){
       let tr = table.getElementsByTagName("tr")[i];
       td = tr.lastElementChild;
-      td.innerHTML = "hello";
+      if(newCases[i-1] == true){
+         td.innerHTML = 'T';
+      }else{
+         td.innerHTML = 'F';
+      }
    }
+}
 
+function getOperator(){
+   container = document.getElementById("container");
+   radioBtns = container.getElementsByTagName("input");
+   for(radio of radioBtns){
+      if(radio.checked){
+         return radio.value;
+      }
+   }
 }
 
 
-function evaluate(){
+
+function evaluate(columnOne, columnTwo, operator){
+   let newCases = [];
+   for(let i = 0; i < tableSize; i++){
    
+      if(columnOne[i] == 'T'){
+         firstTruthCase = true;
+      }else{
+         firstTruthCase = false;
+      }
+      if(columnTwo[i] == 'T'){
+         secondTruthCase = true;
+      }else{
+         secondTruthCase = false;
+      }
+         
+      switch (operator){
+         case 'or':
+            console.log(firstTruthCase, secondTruthCase);
+            console.log(firstTruthCase || secondTruthCase);
+            newCases.push(firstTruthCase || secondTruthCase);
+            console.log(newCases);
+             break;        
+         case 'and':
+             newCases.push(firstTruthCase && secondTruthCase);
+            }
+   }
+   insertValues(newCases);
 }

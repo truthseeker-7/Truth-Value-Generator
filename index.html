@@ -56,10 +56,28 @@
             <td>F</td>
             <td>F</td>
         </tr>
+        <tr>
+            <td><input type = "checkbox" class="checkbox" value = "0"></td>
+            <td><input type = "checkbox" class="checkbox" value = "1"></td>
+            <td><input type = "checkbox" class="checkbox" value = "2"></td>
+        </tr>
     </table>
     <br><br>
-
-<input type = "text" placeholder="Insert expression here" id="text">
+    
+    <div id = "container">
+        <input type = "radio" name = "operator" value="not">
+        <label for="not">NOT</label>
+        <input type = "radio" name = "operator" value="and">
+        <label for="not">AND</label>
+        <input type = "radio" name = "operator" value="or">
+        <label for="not">OR</label>
+        <input type = "radio" name = "operator" value="implies">
+        <label for="not">IMPLIES</label>
+        <input type = "radio" name = "operator" value="bi">
+        <label for="bi">BICONDITIONAL</label>    
+    </div>
+    <br><br>
+<input type = "text" placeholder="Column Header" id="text">
 <button id="btn">Add Column</button>
    <script src="script.js"></script> 
 </body>
