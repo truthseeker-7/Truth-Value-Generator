@@ -39,10 +39,9 @@ document.getElementById("btn").onclick = function(){
          checked.push(checkbox.value);
       }
     }
-    console.log(checked);
-   //  if(checked.length == 1){
-   //    checked.push(Number(checked[0]) + 1);
-   //  }
+     if(checked.length == 1){
+       checked.push(Number(checked[0]) + 1);
+    }
     console.log(checked.length);
    getVarValues(checked[0], checked[1]);
    checkboxVal += 1;
@@ -112,9 +111,11 @@ function evaluate(columnOne, columnTwo, operator){
              newCases.push(firstTruthCase && secondTruthCase);
              console.log(firstTruthCase, secondTruthCase);
              console.log(newCases);
+             break;
          case 'bi':
             newCases.push(firstTruthCase == secondTruthCase);
             console.log(newCases);
+            break;
          case 'not':
             newCases.push(!(firstTruthCase));  
        }
