@@ -118,6 +118,13 @@ function evaluate(columnOne, columnTwo, operator){
             break;
          case 'not':
             newCases.push(!(firstTruthCase));  
+            break;
+         case 'implies':
+            if(firstTruthCase == true && secondTruthCase == false){
+               newCases.push(false);
+            }else{
+               newCases.push(true);
+            }
        }
    }
    insertValues(newCases);
