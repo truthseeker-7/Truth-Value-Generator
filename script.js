@@ -11,7 +11,7 @@ document.getElementById("btn").onclick = function(){
   let th = document.createElement("th"); 
   th.innerHTML = text.value; 
   tr.appendChild(th); 
-  checkboxVal += 1;
+ 
 
   for (let i = 1; i <= tableSize; i++) {
    let tr = table.getElementsByTagName("tr")[i];
@@ -40,7 +40,12 @@ document.getElementById("btn").onclick = function(){
       }
     }
     console.log(checked);
+   //  if(checked.length == 1){
+   //    checked.push(Number(checked[0]) + 1);
+   //  }
+    console.log(checked.length);
    getVarValues(checked[0], checked[1]);
+   checkboxVal += 1;
 }
 
 function getVarValues(firstCol, secondCol){
@@ -52,6 +57,7 @@ function getVarValues(firstCol, secondCol){
       colOne.push(tr.children[firstCol].innerHTML);
       colTwo.push(tr.children[secondCol].innerHTML);    
    } 
+
 
    let operator = getOperator();
    console.log(colOne, colTwo);
@@ -99,14 +105,20 @@ function evaluate(columnOne, columnTwo, operator){
          
       switch (operator){
          case 'or':
-            console.log(firstTruthCase, secondTruthCase);
-            console.log(firstTruthCase || secondTruthCase);
             newCases.push(firstTruthCase || secondTruthCase);
             console.log(newCases);
              break;        
          case 'and':
              newCases.push(firstTruthCase && secondTruthCase);
-            }
+             console.log(firstTruthCase, secondTruthCase);
+             console.log(newCases);
+         case 'bi':
+            newCases.push(firstTruthCase == secondTruthCase);
+            console.log(newCases);
+         case 'not':
+            newCases.push(!(firstTruthCase));  
+       }
    }
    insertValues(newCases);
 }
+
