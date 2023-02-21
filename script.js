@@ -42,5 +42,6 @@ function insertValues(){
 }
 
 
-
- getVarValues(0,2);
+function evaluate(){
+   
+}
